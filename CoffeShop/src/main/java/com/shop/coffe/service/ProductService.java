@@ -13,7 +13,7 @@ public class ProductService {
 	@Autowired
 	ProductDao productDao;
 	
-	public List<Product> getAllProducts() throws Exception {
+	public List<Product> getAllProduct() throws Exception {
 		return productDao.getAllProduct();
 	}
 }

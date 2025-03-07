@@ -20,12 +20,12 @@ public class ProductController {
 	
 	Map<String, Object> storage = new HashMap<>();
 	
-	@GetMapping("getAllProducts")
+	@GetMapping("getAllProduct")
 	public List<Product> getAllProducts() {
 		try {
 			Object o = storage.get("firstPageProducts");
 			if(o == null) {
-				List<Product> list = productService.getAllProducts();
+				List<Product> list = productService.getAllProduct();
 				storage.put("firstPageProducts", list);
 			}
 			return (List<Product>) o;

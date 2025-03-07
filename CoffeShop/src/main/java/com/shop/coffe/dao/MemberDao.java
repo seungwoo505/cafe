@@ -26,6 +26,32 @@ public class MemberDao {
 	@Value("${spring.datasource.password}")
 	private String DB_PW;
 	
+	
+	public Member login(Member m) throws Exception{
+		Class.forName(DB_DRIVER);
+		Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
+		// Statement은 SQL Injection 취약점이 있기 때문에 PreparedStatement 사용 추천
+		/*
+		Statement stmt = con.createStatement();
+		
+		ResultSet rs = stmt.executeQuery("select * from member where email = '" + m.getEmail() + "' and pw = '"  + m.getPw() + "' ");
+		*/
+		
+		PreparedStatement stmt = con.prepareStatement("select * from member where email = ? and pw = ?");
+		
+		stmt.setString(1, m.getEmail());
+		stmt.setString(2, m.getPw());
+		
+		ResultSet rs = stmt.executeQuery();
+		
+		if(rs.next()) {
+			String nickname = rs.getString("nickname");
+			m.setNickname(nickname);
+		}
+		
+		return m;
+	}
+	
 	public void insertMember(Member m) throws Exception{
 		Class.forName(DB_DRIVER);
 		Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);

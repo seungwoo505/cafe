@@ -1,19 +1,19 @@
-package com.shop.cafe.service;
+package com.shop.coffe.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.shop.cafe.dao.ProductDao;
-import com.shop.cafe.dto.Product;
+import com.shop.coffe.dao.ProductDao;
+import com.shop.coffe.dto.Product;
 
 @Service
 public class ProductService {
 	@Autowired
 	ProductDao productDao;
 	
-	public List<Product> getAllProducts() throws Exception{
-		return productDao.getAllProducts();
+	public List<Product> getAllProducts() throws Exception {
+		return productDao.getAllProduct();
 	}
 }

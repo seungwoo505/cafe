@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.shop.coffe.dao.CartDao">
+  
+  <select id="selectCart" resultType="Cart" parameterType="Member">
+    select *
+    from cart
+    where email=#{email}
+  </select>
+  
+  <insert id="insertCart" parameterType="Cart" >
+    insert into 
+    cart(email, prodcode, price)
+    values(#{email}, #{prodcode}, #{price})
+  </insert>
+  
+  <update id="updateCart" parameterType="Cart" >
+    update cart 
+    set
+    prodcode=#{prodcode},
+    price=#{price}
+    where email=#{email}
+  </update>
+</mapper>

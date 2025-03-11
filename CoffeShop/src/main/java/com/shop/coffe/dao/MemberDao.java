@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import com.shop.coffe.dto.Login;
 import com.shop.coffe.dto.Member;
 import com.shop.coffe.dto.Product;
 
@@ -20,6 +21,14 @@ public interface MemberDao {
 	
 	public Member login(Member m) throws Exception;
 	
+	public Login checkLogin(Login m) throws Exception;
+	
+	public void updateLogin(Login m) throws Exception;
+	
 	public void insertMember(Member m) throws Exception;
+	
+	public void updateMember(Member m) throws Exception;
+	
+	public void deleteMember(String email) throws Exception;
 	
 }
